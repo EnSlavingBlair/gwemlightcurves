@@ -264,14 +264,50 @@ def plot_mag_panels_TSB(table_dict, distance, filts=["g", "r", "i", "z", "y", "J
 
 #######
 
-t = KNTable_read_samples_TSB('posterior_samples.dat', Nsamples=1000)
+data_filename = "posterior_samples.dat"
+Nsamples=1000
+downsample = 100
+
+t = KNTable_read_samples_TSB(data_filename, Nsamples)
 
 t = t.calc_tidal_lambda(remove_negative_lambda=True)
 t = t.calc_compactness(fit=True)
 t = t.calc_baryonic_mass(EOS=None, TOV=None, fit=True)
-t = t.downsample(Nsamples=100)
-tini = 0.1; tmax = 50.0; dt = 0.1; vmin = 0.02; th = 0.2; ph = 3.14; kappa = 1.0; eps = 1.58*(10**10); alp = 1.2; eth = 0.5; flgbct = 1; beta = 3.0; kappa_r = 1.0; slope_r = -1.2; theta_r = 0.0; Ye = 0.3
-t['tini'] = tini; t['tmax'] = tmax; t['dt'] = dt; t['vmin'] = vmin; t['th'] = th; t['ph'] = ph; t['kappa'] = kappa; t['eps'] = eps; t['alp'] = alp; t['eth'] = eth; t['flgbct'] = flgbct; t['beta'] = beta; t['kappa_r'] = kappa_r; t['slope_r'] = slope_r; t['theta_r'] = theta_r; t['Ye'] = Ye
+t = t.downsample(downsample)
+
+tini = 0.1
+tmax = 50.0
+dt = 0.1
+vmin = 0.02
+th = 0.2
+ph = 3.14
+kappa = 1.0
+eps = 1.58*(10**10)
+alp = 1.2
+eth = 0.5
+flgbct = 1
+beta = 3.0
+kappa_r = 1.0
+slope_r = -1.2
+theta_r = 0.0
+Ye = 0.3
+
+t['tini'] = tini
+t['tmax'] = tmax
+t['dt'] = dt
+t['vmin'] = vmin
+t['th'] = th
+t['ph'] = ph
+t['kappa'] = kappa
+t['eps'] = eps
+t['alp'] = alp
+t['eth'] = eth
+t['flgbct'] = flgbct
+t['beta'] = beta
+t['kappa_r'] = kappa_r
+t['slope_r'] = slope_r
+t['theta_r'] = theta_r
+t['Ye'] = Ye
 
 # Create dict of tables for the various models, calculating mass ejecta velocity of ejecta and the lightcurve from the model
 models = ["DiUj2017","Me2017"]
