@@ -5,7 +5,6 @@ from gwemlightcurves.KNModels import KNTable
 from gwemlightcurves import lightcurve_utils
 import h5py
 
-### My version of the code to create kilonova light curves
 ### Modified version of code from :
 ### https://gwemlightcurves.github.io/examples/index.html#generating-light-curves
 
@@ -265,49 +264,32 @@ def plot_mag_panels_TSB(table_dict, distance, filts=["g", "r", "i", "z", "y", "J
 #######
 
 data_filename = "posterior_samples.dat"
-Nsamples=1000
+nsamples=1000
 downsample = 100
+distance = 100 #Mpc
 
-t = KNTable_read_samples_TSB(data_filename, Nsamples)
-
+t = KNTable_read_samples_TSB(data_filename, Nsamples=nsamples)
 t = t.calc_tidal_lambda(remove_negative_lambda=True)
 t = t.calc_compactness(fit=True)
 t = t.calc_baryonic_mass(EOS=None, TOV=None, fit=True)
-t = t.downsample(downsample)
+t = t.downsample(Nsamples=downsample)
 
-tini = 0.1
-tmax = 50.0
-dt = 0.1
-vmin = 0.02
-th = 0.2
-ph = 3.14
-kappa = 1.0
-eps = 1.58*(10**10)
-alp = 1.2
-eth = 0.5
-flgbct = 1
-beta = 3.0
-kappa_r = 1.0
-slope_r = -1.2
-theta_r = 0.0
-Ye = 0.3
-
-t['tini'] = tini
-t['tmax'] = tmax
-t['dt'] = dt
-t['vmin'] = vmin
-t['th'] = th
-t['ph'] = ph
-t['kappa'] = kappa
-t['eps'] = eps
-t['alp'] = alp
-t['eth'] = eth
-t['flgbct'] = flgbct
-t['beta'] = beta
-t['kappa_r'] = kappa_r
-t['slope_r'] = slope_r
-t['theta_r'] = theta_r
-t['Ye'] = Ye
+tini = 0.1; t['tini'] = tini
+tmax = 50.0; t['tmax'] = tmax
+dt = 0.1; t['dt'] = dt
+vmin = 0.02; t['vmin'] = vmin
+th = 0.2; t['th'] = th
+ph = 3.14; t['ph'] = ph
+kappa = 1.0; t['kappa'] = kappa
+eps = 1.58*(10**10); t['eps'] = eps
+alp = 1.2; t['alp'] = alp
+eth = 0.5; t['eth'] = eth
+flgbct = 1; t['flgbct'] = flgbct
+beta = 3.0; t['beta'] = beta
+kappa_r = 1.0; t['kappa_r'] = kappa_r
+slope_r = -1.2; t['slope_r'] = slope_r
+theta_r = 0.0; t['theta_r'] = theta_r
+Ye = 0.3; t['Ye'] = Ye
 
 # Create dict of tables for the various models, calculating mass ejecta velocity of ejecta and the lightcurve from the model
 models = ["DiUj2017","Me2017"]
@@ -319,7 +301,6 @@ for model in models:
     model_tables[model] = lightcurve_utils.calc_peak_mags(model_tables[model])
     model_tables[model] = lightcurve_utils.interpolate_mags_lbol(model_tables[model])
 
-distance = 100 #Mpc
 plot = plot_mag_panels_TSB(model_tables, distance=distance)
 plot.savefig("kilonova_light_curves-example.png")
 
