@@ -48,7 +48,7 @@ def parse_commandline():
 
     parser.add_option("-a","--analysis_type",default="combined", help="measured,inferred,combined")  
  
-    parser.add_option("--nsamples",default=-1,type=int)
+    parser.add_option("--Nsamples",default=-1,type=int)
 
     parser.add_option("-m","--model",default="Ka2017", help="Ka2017,Ka2017x2")
 

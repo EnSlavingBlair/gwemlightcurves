@@ -41,7 +41,7 @@ multifile = lightcurve_utils.get_post_file(dataDirKN)
 data = np.loadtxt(multifile)
 data_out[grb]["KN"] = data
 data_out[grb]["KN_samples"] = KNTable.read_multinest_samples(multifile,'Ka2017')
-#data_out[grb]["KN_samples"] = data_out[grb]["KN_samples"].downsample(Nsamples=nsamples)
+#data_out[grb]["KN_samples"] = data_out[grb]["KN_samples"].downsample(Nsamples=Nsamples)
 
 ModelPath = '%s/svdmodels'%('../output')
 kwargs = {'SaveModel':False,'LoadModel':True,'ModelPath':ModelPath}

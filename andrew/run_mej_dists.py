@@ -224,7 +224,7 @@ def run_theoretical(Type, EOS, mass_draws=mass_draws):
     all_thetas_list = 180. * np.arccos(np.random.uniform(-1., 1., mass_draws * N_EOS)) / np.pi
     #print('len thetas:')
     #print(len(all_thetas_list))
-    #all_thetas_list = 180. * np.arccos(np.random.uniform(-1., 1., len(samples) * nsamples)) / np.pi
+    #all_thetas_list = 180. * np.arccos(np.random.uniform(-1., 1., len(samples) * Nsamples)) / np.pi
 
     type_plot = Type
     #-----------------------------------------------------------

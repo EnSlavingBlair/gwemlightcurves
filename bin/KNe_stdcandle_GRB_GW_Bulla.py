@@ -55,7 +55,7 @@ def parse_commandline():
  
     parser.add_option("-g","--grb_name",default="GRB060614") 
 
-    parser.add_option("--nsamples",default=-1,type=int)
+    parser.add_option("--Nsamples",default=-1,type=int)
 
     parser.add_option("--multinest_samples", default="../plots/gws/Ka2017_old/u_g_r_i_z_y_J_H_K/0_14/ejecta/GW170817/1.00/2-post_equal_weights.dat")
     parser.add_option("-m","--model",default="Ka2017", help="Ka2017,Ka2017x2")
@@ -381,8 +381,8 @@ plt.savefig(plotName)
 plt.close()
 
 samples = KNTable.read_multinest_samples(multinest_samples, opts.model)
-if opts.nsamples > 0:
-    samples = samples.downsample(Nsamples=opts.nsamples)
+if opts.Nsamples > 0:
+    samples = samples.downsample(Nsamples=opts.Nsamples)
 # These are the default values supplied with respect to generating lightcurves
 tini = 0.1
 tmax = 14.0
@@ -417,8 +417,8 @@ if opts.model == "Ka2017_TrPi2018":
 else:
     samples_gw = KNTable.read_multinest_samples(opts.multinest_samples, opts.model)
 
-if opts.nsamples > 0:
-    samples_gw = samples.downsample(Nsamples=opts.nsamples)
+if opts.Nsamples > 0:
+    samples_gw = samples.downsample(Nsamples=opts.Nsamples)
 #add default values from above to table
 samples_gw['tini'] = tini
 samples_gw['tmax'] = tmax

@@ -33,7 +33,7 @@ for distance_set in distance_sets:
     filename = os.path.join(outputDir,"Me2017_u_list.dat")
     #if not os.path.isfile(filename):
     if True:
-        system_call = "python run_parameterized_models_event.py --nsamples 1000 --mindistance %d --maxdistance %d --cbc_type %s --cbc_list %s"%(distance_set[0],distance_set[1],cbc_type,cbc_list)
+        system_call = "python run_parameterized_models_event.py --Nsamples 1000 --mindistance %d --maxdistance %d --cbc_type %s --cbc_list %s"%(distance_set[0],distance_set[1],cbc_type,cbc_list)
         print(system_call)
         print(stop)
         os.system(system_call)

@@ -66,7 +66,7 @@ def parse_commandline():
     parser.add_argument("--distance",default=125.0,type=float)
     parser.add_argument("--T0",default=57982.5285236896,type=float)
     parser.add_argument("--errorbudget",default=1.0,type=float)
-    parser.add_argument("--nsamples",default=-1,type=int)
+    parser.add_argument("--Nsamples",default=-1,type=int)
     parser.add_argument("--ndownsamples",default=-1,type=int)
 
     parser.add_argument("--doFixedLimit",  action="store_true", default=False)
@@ -344,10 +344,10 @@ if (opts.analysisType == "posterior") or (opts.analysisType == "mchirp"):
         
     else:
         if opts.nsamples < 1:
-            print('Please set nsamples >= 1')
+            print('Please set Nsamples >= 1')
             exit(0)
         # read samples from template analysis
-        #samples = KNTable.read_mchirp_samples(opts.mchirp_samples, Nsamples=opts.nsamples, twixie_flag = opts.twixie_flag)
+        #samples = KNTable.read_mchirp_samples(opts.mchirp_samples, Nsamples=opts.Nsamples, twixie_flag = opts.twixie_flag)
         samples = KNTable.read_mchirp_samples(opts.mchirp_samples, twixie_flag = opts.twixie_flag)
         if (opts.eostype == "spec"):
                 if opts.doParallel:

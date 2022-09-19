@@ -48,7 +48,7 @@ def parse_commandline():
 
     parser.add_option("-a","--analysis_type",default="combined", help="measured,inferred,combined")  
  
-    parser.add_option("--nsamples",default=-1,type=int)
+    parser.add_option("--Nsamples",default=-1,type=int)
 
     parser.add_option("--pickle_samples", default="../plots/standard_candles/GRB/GRB060614/inferred/H0.pkl,../plots/standard_candles/GRB/GRB150101B/inferred/H0.pkl,../plots/standard_candles/GRB/GRB050709/inferred/H0.pkl,../plots/standard_candles/inferred/H0.pkl")
 

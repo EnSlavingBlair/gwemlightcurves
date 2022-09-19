@@ -159,7 +159,7 @@ def calc_mej(m1, m2, thetas, Type, Type_set, EOS, eospostdat, EOS_draws, EOS_idx
     #if i%10 == 0:
     #    print(f'{i} out of {mass_draws} mej values calculated--------------------------')
 
-    print(f'Running for {mass_draws} mej values with nsamples = {N_EOS}')
+    print(f'Running for {mass_draws} mej values with Nsamples = {N_EOS}')
     m1m = m1
     m2m = m2
     samples = run_EOS(EOS, m1m, m2m, thetas, N_EOS = N_EOS, type_set=Type, eospostdat = eospostdat, EOS_draws = EOS_draws, EOS_idx = EOS_idx)

@@ -48,7 +48,7 @@ def parse_commandline():
     parser.add_argument("--distance",default=40.0,type=float)
     parser.add_argument("--T0",default=57982.5285236896,type=float)
     parser.add_argument("--errorbudget",default=0.01,type=float)
-    parser.add_argument("--nsamples",default=-1,type=int)
+    parser.add_argument("--Nsamples",default=-1,type=int)
 
     parser.add_argument("--mej",default=0.04,type=float)
     parser.add_argument("--vej",default=0.20,type=float)

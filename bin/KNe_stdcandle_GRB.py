@@ -55,7 +55,7 @@ def parse_commandline():
  
     parser.add_option("-g","--grb_name",default="GRB060614") 
 
-    parser.add_option("--nsamples",default=-1,type=int)
+    parser.add_option("--Nsamples",default=-1,type=int)
     parser.add_option("-m","--model",default="Ka2017", help="Ka2017,Ka2017x2")
 
     opts, args = parser.parse_args()
@@ -372,8 +372,8 @@ plt.savefig(plotName)
 plt.close()
 
 samples = KNTable.read_multinest_samples(multinest_samples, opts.model)
-if opts.nsamples > 0:
-    samples = samples.downsample(Nsamples=opts.nsamples)
+if opts.Nsamples > 0:
+    samples = samples.downsample(Nsamples=opts.Nsamples)
 # These are the default values supplied with respect to generating lightcurves
 tini = 0.1
 tmax = 14.0

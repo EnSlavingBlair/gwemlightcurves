@@ -192,7 +192,7 @@ def run_EOS(EOS, m1, m2, thetas, type_set = 'None', N_EOS = 100, model_set = 'Bu
     
     #print(len(thetas))
     #check theta implementation for reproducibility
-    #thetas = 180. * np.arccos(np.random.uniform(-1., 1., len(samples) * nsamples)) / np.pi
+    #thetas = 180. * np.arccos(np.random.uniform(-1., 1., len(samples) * Nsamples)) / np.pi
     idx_thetas = np.where(thetas > 90.)[0]
     thetas[idx_thetas] = 180. - thetas[idx_thetas]
     #thetas = list(thetas)

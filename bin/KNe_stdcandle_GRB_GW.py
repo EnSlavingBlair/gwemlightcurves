@@ -60,7 +60,7 @@ def parse_commandline():
 
     parser.add_option("-e","--errorbudget",default=1.0,type=float)
 
-    parser.add_option("--nsamples",default=-1,type=int)
+    parser.add_option("--Nsamples",default=-1,type=int)
 
     parser.add_option("--multinest_samples", default="../plots/gws/Ka2017_old/u_g_r_i_z_y_J_H_K/0_14/ejecta/GW170817/1.00/2-post_equal_weights.dat")
     parser.add_option("-m","--model",default="Ka2017", help="Ka2017,Ka2017x2")
@@ -464,8 +464,8 @@ plt.savefig(plotName)
 plt.close()
 
 samples = KNTable.read_multinest_samples(multinest_samples, opts.model)
-if opts.nsamples > 0:
-    samples = samples.downsample(Nsamples=opts.nsamples)
+if opts.Nsamples > 0:
+    samples = samples.downsample(Nsamples=opts.Nsamples)
 # restrict ejecta masses
 samples = samples[samples["mej"] < 0.1]
 
@@ -507,8 +507,8 @@ elif opts.model == "Bu2019inc_TrPi2018":
 else:
     samples_gw = KNTable.read_multinest_samples(opts.multinest_samples, opts.model)
 
-if opts.nsamples > 0:
-    samples_gw = samples.downsample(Nsamples=opts.nsamples)
+if opts.Nsamples > 0:
+    samples_gw = samples.downsample(Nsamples=opts.Nsamples)
 # restrict ejecta masses
 samples_gw = samples_gw[samples_gw["mej"] < 0.1]
 #add default values from above to table

@@ -197,7 +197,7 @@ def run_EOS(EOS, m1, m2, thetas, type_set = 'None', N_EOS = 100, eospostdat = No
             Xlans.append(Xlan)
             mbnss.append(mbns)
     
-    #thetas = 180. * np.arccos(np.random.uniform(-1., 1., len(samples) * nsamples)) / np.pi
+    #thetas = 180. * np.arccos(np.random.uniform(-1., 1., len(samples) * Nsamples)) / np.pi
     idx_thetas = np.where(thetas > 90.)[0]
     thetas[idx_thetas] = 180. - thetas[idx_thetas]
     Xlans = np.ones(np.array(m1s).shape) * Xlan_val

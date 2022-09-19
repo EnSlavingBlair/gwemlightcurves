@@ -45,14 +45,14 @@ for grb, dataDirKN, dataDirKNAG in zip(grbs,dataDirsKN,dataDirsKNAG):
     if (data.size > 0) and (grb in ["GW170817","GRB150101B","GRB050709"]): 
         data_out[grb]["KN"] = data
         data_out[grb]["KN_samples"] = KNTable.read_multinest_samples(multifile,'Ka2017')
-        #data_out[grb]["KN_samples"] = data_out[grb]["KN_samples"].downsample(Nsamples=nsamples)
+        #data_out[grb]["KN_samples"] = data_out[grb]["KN_samples"].downsample(Nsamples=Nsamples)
 
     multifile = lightcurve_utils.get_post_file(dataDirKNAG)
     data = np.loadtxt(multifile)
     if (data.size > 0) and (grb in ["GRB130603B"]): 
         data_out[grb]["KNAG"] = data
         data_out[grb]["KNAG_samples"] = KNTable.read_multinest_samples(multifile,'Ka2017_TrPi2018')
-        #data_out[grb]["KNAG_samples"] = data_out[grb]["KNAG_samples"].downsample(Nsamples=nsamples)
+        #data_out[grb]["KNAG_samples"] = data_out[grb]["KNAG_samples"].downsample(Nsamples=Nsamples)
 
 ModelPath = '%s/svdmodels'%('../output')
 kwargs = {'SaveModel':False,'LoadModel':True,'ModelPath':ModelPath}

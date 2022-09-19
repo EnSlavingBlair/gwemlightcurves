@@ -59,7 +59,7 @@ def parse_commandline():
     parser.add_argument("--distance",default=125.0,type=float)
     parser.add_argument("--T0",default=57982.5285236896,type=float)
     parser.add_argument("--errorbudget",default=1.0,type=float)
-    parser.add_argument("--nsamples",default=10,type=int)
+    parser.add_argument("--Nsamples",default=10,type=int)
 
     parser.add_argument("--doFixedLimit",  action="store_true", default=False)
     parser.add_argument("--limits",default="20.4,20.4")
@@ -267,10 +267,10 @@ def run_EOS(EOS, m1, m2, chi, type_set=Type, model_set = 'Bu2019inc', twixie = t
         if True: 
             nsamples = 10
             if opts.nsamples < 1:
-                print('Please set nsamples >= 1')
+                print('Please set Nsamples >= 1')
                 exit(0)
             # read samples from template analysis
-            #samples = KNTable.read_mchirp_samples(opts.mchirp_samples, Nsamples=opts.nsamples, twixie_flag = twixie_tf) 
+            #samples = KNTable.read_mchirp_samples(opts.mchirp_samples, Nsamples=opts.Nsamples, twixie_flag = twixie_tf)
            
      
             m1s, m2s, dists_mbta = [], [], []
@@ -352,8 +352,8 @@ def run_EOS(EOS, m1, m2, chi, type_set=Type, model_set = 'Bu2019inc', twixie = t
                     np.random.uniform(0)
     
       
-            #Xlans = [10**opts.Xlan_fixed] * len(samples) * nsamples
-            #phis = [opts.phi_fixed] * len(samples) * nsamples 
+            #Xlans = [10**opts.Xlan_fixed] * len(samples) * Nsamples
+            #phis = [opts.phi_fixed] * len(samples) * Nsamples
             thetas = 180. * np.arccos(np.random.uniform(-1., 1., len(samples) * nsamples)) / np.pi
             idx_thetas = np.where(thetas > 90.)[0]
             thetas[idx_thetas] = 180. - thetas[idx_thetas]

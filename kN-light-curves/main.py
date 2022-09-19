@@ -8,12 +8,12 @@ import h5py
 ### Modified version of code from :
 ### https://gwemlightcurves.github.io/examples/index.html#generating-light-curves
 
-def KNTable_read_samples_TSB(filename_samples, Nsamples = 100):
+def KNTable_read_samples_TSB(data_filename, Nsamples = 100):
     import os
-    if not os.path.isfile(filename_samples):
+    if not os.path.isfile(data_filename):
         raise ValueError("Sample file supplied does not exist")
-    if "hdf" in filename_samples:
-        samples_out = h5py.File(filename_samples, 'r')
+    if "hdf" in data_filename:
+        samples_out = h5py.File(data_filename, 'r')
         samples_out = samples_out['lalinference']
         data_out = Table(samples_out)
         data_out['q'] = data_out['m1_source'] / data_out['m2_source']
@@ -26,7 +26,7 @@ def KNTable_read_samples_TSB(filename_samples, Nsamples = 100):
         data_out["m1"], data_out["m2"] = lightcurve_utils.mc2ms(data_out["mchirp"], data_out["eta"])
         data_out['q'] = 1.0 / data_out['q']
     else:
-        data_out = Table.read(filename_samples, format='ascii')
+        data_out = Table.read(data_filename, format='ascii')
         if 'mass_1_source' in list(data_out.columns):
             data_out['m1'] = data_out['mass_1_source']
             print('setting m1 to m1_source')
@@ -263,12 +263,12 @@ def plot_mag_panels_TSB(table_dict, distance, filts=["g", "r", "i", "z", "y", "J
 
 #######
 
-data_filename = "posterior_samples.dat"
-nsamples=1000
+data_filename = "GW170817_GWTC-1.hdf5"#"posterior_samples.dat"#"H-H1_GWOSC_16KHZ_R1-1187008867-32.hdf5"#
+Nsamples=1000
 downsample = 100
 distance = 100 #Mpc
 
-t = KNTable_read_samples_TSB(data_filename, Nsamples=nsamples)
+t = KNTable_read_samples_TSB(data_filename, Nsamples=Nsamples)
 t = t.calc_tidal_lambda(remove_negative_lambda=True)
 t = t.calc_compactness(fit=True)
 t = t.calc_baryonic_mass(EOS=None, TOV=None, fit=True)

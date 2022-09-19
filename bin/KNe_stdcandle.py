@@ -54,7 +54,7 @@ def parse_commandline():
     parser.add_option("-f","--fit_type",default="linear", help="linear,gpr")
     parser.add_option("-l","--lanthanide_type",default="lr", help="lr,lf")
 
-    parser.add_option("--nsamples",default=-1,type=int)
+    parser.add_option("--Nsamples",default=-1,type=int)
 
     #parser.add_option("--multinest_samples", default="../plots/gws/Ka2017_FixZPT0/u_g_r_i_z_y_J_H_K/0_14/ejecta/GW170817/1.00/2-post_equal_weights.dat")
     #parser.add_option("--multinest_samples", default="../plots/gws/Ka2017_old/u_g_r_i_z_y_J_H_K/0_14/ejecta/GW170817/1.00/2-post_equal_weights.dat")
@@ -569,8 +569,8 @@ if not "FixZPT0" in opts.multinest_samples:
     ZPRange = 5.0
     zp_mu, zp_std = 0.0, 5.0
     #samples["zp"] = scipy.stats.norm(zp_mu, zp_std).ppf(samples["zp"])
-if opts.nsamples > 0:
-    samples = samples.downsample(Nsamples=opts.nsamples)
+if opts.Nsamples > 0:
+    samples = samples.downsample(Nsamples=opts.Nsamples)
 
 
 # restrict ejecta masses
